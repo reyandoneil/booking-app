@@ -1,4 +1,5 @@
 const { verify, sign } = require('jsonwebtoken');
+const createError = require('./errorHandler');
 const SECRET = process.env.SECRET;
 
 const signToken = (payload) => {

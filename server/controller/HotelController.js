@@ -1,3 +1,4 @@
+const { Promise } = require('mongoose');
 const Hotel = require('../models/Hotel.js');
 
 class HotelController {
@@ -39,19 +40,45 @@ class HotelController {
   static async getAll(req, res) {
     try {
       const hotels = await Hotel.find();
-      res.status(200).json(hotels);
+      res.status(200).json({
+        totalHotel: hotels.length,
+        data: hotels,
+      });
     } catch (error) {
       console.log('error');
       res.status(500).json(error);
     }
   }
 
-  static async get(req, res,next) {
+  static async get(req, res, next) {
     try {
       const hotel = await Hotel.findById(req.params.id);
       res.status(200).json(hotel);
     } catch (error) {
-      next(error)
+      next(error);
+    }
+  }
+
+  static async countByCity(req, res, next) {
+    const cities = req.query.cities.split(',');
+    try {
+      const list = await Promise.all(
+        cities.map((city) => {
+          return Hotel.countDocuments({ city: city });
+        })
+      );
+      res.status(200).json(list);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async countByType(req, res, next) {
+    try {
+      const hotel = await Hotel.findById(req.params.id);
+      res.status(200).json(hotel);
+    } catch (error) {
+      next(error);
     }
   }
 }
