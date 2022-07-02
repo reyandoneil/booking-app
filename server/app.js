@@ -5,7 +5,37 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5001;
 const cors = require('cors');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Booking-Hotel App',
+      version: '0.1.0',
+      description:
+        'This is a simple Booking-hotel app CRUD API application made with Express and documented with Swagger',
+      // license: {
+      //   name: 'MIT',
+      //   url: 'https://spdx.org/licenses/MIT.html',
+      // },
+      // contact: {
+      //   name: 'LogRocket',
+      //   url: 'https://logrocket.com',
+      //   email: 'info@email.com',
+      // },
+    },
+    servers: [
+      {
+        url: 'http://localhost:3001/',
+      },
+    ],
+  },
+  apis: ['./router/*.js'],
+};
+const specs = swaggerJsdoc(options);
 
 
 const connect = async () => {
@@ -26,9 +56,10 @@ mongoose.connection.on('connected', () => {
   console.log('MongoDB connected!');
 });
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(express.json());
 app.use(route);
 

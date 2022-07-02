@@ -109,9 +109,8 @@ export const InputSearch = styled.input`
   width: 100%;
   border: none;
   color: black;
-  cursor: pointer;
+
   &:hover {
-    box-shadow: 2px 16px 17px -15px rgba(0, 0, 0, 0.75);
   }
   &:focus {
     outline: none;

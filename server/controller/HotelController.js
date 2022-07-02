@@ -1,5 +1,6 @@
 const { Promise } = require('mongoose');
 const Hotel = require('../models/Hotel.js');
+const errorHandler = require('../utils/errorHandler')
 
 class HotelController {
   static async createHotel(req, res) {
@@ -55,7 +56,7 @@ class HotelController {
       const hotel = await Hotel.findById(req.params.id);
       res.status(200).json(hotel);
     } catch (error) {
-      next(error);
+      next(errorHandler(404,'Hotel was not found'));
     }
   }
 
@@ -64,6 +65,7 @@ class HotelController {
     try {
       const list = await Promise.all(
         cities.map((city) => {
+          console.log(city);
           return Hotel.countDocuments({ city: city });
         })
       );
