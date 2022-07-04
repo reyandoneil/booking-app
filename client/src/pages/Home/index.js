@@ -3,6 +3,8 @@ import {
   Navbar,
   Headers,
   BrowseByCity,
+  CovidMessage,
+  Footer,
 } from '../../components/Organisms';
 
 function HomePage() {
@@ -11,8 +13,9 @@ function HomePage() {
       <Container>
         <Navbar />
         <Headers />
+        <CovidMessage />
         <BrowseByCity />
-        <BrowseByCity />
+        <Footer />
       </Container>
     </>
   );

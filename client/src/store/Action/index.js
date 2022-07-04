@@ -1,2 +1,8 @@
 //GLOBAL
-export const SET_SCREEN_SIZE = 'SET_SCREEN_SIZE'
+export const SET_SCREEN_SIZE = 'SET_SCREEN_SIZE';
+
+//HOTELS
+export const SET_LOADING = 'SET_LOADING';
+export const ERROR_FROM_HOTEL = 'ERROR_FROM_HOTEL';
+
+export const GET_HOTEL_BY_CITY = 'GET_HOTEL_BY_CITY';

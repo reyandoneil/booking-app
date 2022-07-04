@@ -57,7 +57,7 @@ const authentication = require('../utils/authentication');
  *  description: The Hotels API
  */
 
-route.use(authentication);
+// route.use(authentication);
 //CREATE
 route.post('/', HotelController.createHotel);
 //UPDATE
