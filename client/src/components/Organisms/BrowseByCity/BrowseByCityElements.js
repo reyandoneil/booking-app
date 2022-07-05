@@ -39,14 +39,42 @@ export const CardContainer = styled(Slider)`
   .slick-slide > div {
     padding: 0 5px;
   }
+  .slick-prev {
+    left: 3% !important;
+    z-index: 1;
+  }
+  .slick-next {
+    right: 3% !important;
+    z-index: 1;
+  }
+  ${(props) => {
+    if (props.name === 'city') {
+      return `
+       height: 300px;
+      `;
+    } else {
+      return `
+       height: 200px;
+      `;
+    }
+  }}
   margin-top: 10px;
-  height: 200px;
   width: 100%;
 `;
 
 export const Card = styled.div`
-  height: 200px;
-  width: 250px;
+${(props => {
+  if(props.name === 'city'){
+    return`
+    height: 300px;
+    width: 300px;`
+  }else{
+    return`     
+    height: 200px;
+    width: 200px;
+    `
+  }
+})}
   cursor: pointer;
 `;
 

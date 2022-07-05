@@ -8,7 +8,7 @@ export const ButtonWrapper = styled.button`
       width:100%;
       background-color: #0071c2;
       margin-left: 0px;
-      margin-top:5px;
+      margin-top:7px;
       font-size:20px;
  
       `;

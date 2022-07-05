@@ -7,6 +7,10 @@ import bandung from './bandung.jpeg';
 import jogya from './jogja.jpg';
 import lombok from './lombok.jpg';
 import bali from './bali.jpg';
+import hotel from './hotel.jpg';
+import apartment from './apartement.jpg';
+import resort from './resort.jpg';
+import villa from './villa.jpg';
 
 export {
   boohotLogo,
@@ -18,4 +22,8 @@ export {
   jogya,
   lombok,
   bali,
+  hotel,
+  apartment,
+  resort,
+  villa,
 };

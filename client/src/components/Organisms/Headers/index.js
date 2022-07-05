@@ -10,6 +10,11 @@ import {
   ClearInput,
   IconInputWrapper,
   SearchMenuWrapper,
+  CheckIn,
+  CheckOut,
+  DatePickerWrapper,
+  Space,
+  Symbol
 } from './HeadersElements';
 import { togle_icon, closeIcon } from '../../../Assets';
 import { useSelector } from 'react-redux';
@@ -42,10 +47,10 @@ function Header() {
     <HeadersContainer ss={breakpoint}>
       <Headers>
         <Title ss={breakpoint}>
-          Find your next Hotel {breakpoint}
+          Find your next Stay {breakpoint}
         </Title>
         <SubTitle ss={breakpoint}>
-          Search deal on hotel around Indonesia !!
+          Search hotel, villa and much more around Indonesia !!
         </SubTitle>
       </Headers>
       <SearchMenu ss={breakpoint}>
@@ -66,6 +71,13 @@ function Header() {
             )}
           </IconInputWrapper>
         </SearchMenuWrapper>
+        <DatePickerWrapper ss={breakpoint}>
+          <CheckIn ss={breakpoint}>Check-In</CheckIn>
+          <Space ss={breakpoint}>
+            <Symbol>-</Symbol>
+          </Space>
+          <CheckOut ss={breakpoint}>Check-Out</CheckOut>
+        </DatePickerWrapper>
         <Button
           title={'Search'}
           className={'SearchButton'}

@@ -14,7 +14,8 @@ function HomePage() {
         <Navbar />
         <Headers />
         <CovidMessage />
-        <BrowseByCity />
+        <BrowseByCity name={'type'} />
+        <BrowseByCity name={'city'} />
         <Footer />
       </Container>
     </>
