@@ -46,4 +46,5 @@ export const Text = styled.span`
 export const Links = styled.a`
   text-decoration: none;
   color: #0071c2;
+  margin-left: 5px;
 `;

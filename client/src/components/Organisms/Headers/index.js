@@ -14,11 +14,15 @@ import {
   CheckOut,
   DatePickerWrapper,
   Space,
-  Symbol
+  Symbol,
+  Icon,
+  IconWrapper,
+  IconWrapper2,
 } from './HeadersElements';
-import { togle_icon, closeIcon } from '../../../Assets';
+import { togle_icon, closeIcon, Calendar } from '../../../Assets';
 import { useSelector } from 'react-redux';
 import { Button } from '../../Atoms';
+import { Calender } from '../../Molecules';
 
 function Header() {
   const breakpoint = useSelector(
@@ -42,6 +46,11 @@ function Header() {
   };
   const onClear = () => {
     setInput({ city: '' });
+  };
+  //CALENDER
+  const [openCal, setOpenCal] = useState(false);
+  const openCalender = () => {
+    setOpenCal(!openCal);
   };
   return (
     <HeadersContainer ss={breakpoint}>
@@ -71,13 +80,20 @@ function Header() {
             )}
           </IconInputWrapper>
         </SearchMenuWrapper>
-        <DatePickerWrapper ss={breakpoint}>
+        <DatePickerWrapper ss={breakpoint} onClick={openCalender}>
+          <IconWrapper>
+            <Icon src={Calendar} />
+          </IconWrapper>
           <CheckIn ss={breakpoint}>Check-In</CheckIn>
           <Space ss={breakpoint}>
             <Symbol>-</Symbol>
           </Space>
+          <IconWrapper2>
+            <Icon src={Calendar} ss={breakpoint}/>
+          </IconWrapper2>
           <CheckOut ss={breakpoint}>Check-Out</CheckOut>
         </DatePickerWrapper>
+        {openCal && <Calender ss={breakpoint} />}
         <Button
           title={'Search'}
           className={'SearchButton'}
