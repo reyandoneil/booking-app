@@ -46,8 +46,12 @@ class HotelController {
   }
 
   static async getAll(req, res) {
+    const { min, max, ...oth } = req.query;
     try {
-      const hotels = await Hotel.find();
+      const hotels = await Hotel.find({
+        ...oth,
+        cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+      }).limit(req.query.limit);
       res.status(200).json({
         totalHotel: hotels.length,
         data: hotels,
@@ -83,8 +87,25 @@ class HotelController {
 
   static async countByType(req, res, next) {
     try {
-      const hotel = await Hotel.findById(req.params.id);
-      res.status(200).json(hotel);
+      const hotelCount = await Hotel.countDocuments({
+        type: 'hotel',
+      });
+      const villaCount = await Hotel.countDocuments({
+        type: 'villa',
+      });
+      const resortCount = await Hotel.countDocuments({
+        type: 'resort',
+      });
+      const apartmentCount = await Hotel.countDocuments({
+        type: 'apartment',
+      });
+
+      res.status(200).json([
+        { type: 'hotel', count: hotelCount },
+        { type: 'villa', count: villaCount },
+        { type: 'resort', count: resortCount },
+        { type: 'apartment', count: apartmentCount },
+      ]);
     } catch (error) {
       next(error);
     }
