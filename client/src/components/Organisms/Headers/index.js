@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import {
   Headers,
   Title,
@@ -18,8 +19,14 @@ import {
   Icon,
   IconWrapper,
   IconWrapper2,
+  GuestsWrapper,
 } from './HeadersElements';
-import { togle_icon, closeIcon, Calendar } from '../../../Assets';
+import {
+  togle_icon,
+  closeIcon,
+  Calendar,
+  Guest,
+} from '../../../Assets';
 import { useSelector } from 'react-redux';
 import { Button } from '../../Atoms';
 import { Calender } from '../../Molecules';
@@ -49,9 +56,14 @@ function Header() {
   };
   //CALENDER
   const [openCal, setOpenCal] = useState(false);
+  const [calender, setCalender] = useState();
+  const onChangeCalendar = (date) => {
+    setCalender(format(date, 'MM/dd/yyyy'));
+  };
   const openCalender = () => {
     setOpenCal(!openCal);
   };
+  console.log(calender);
   return (
     <HeadersContainer ss={breakpoint}>
       <Headers>
@@ -63,7 +75,7 @@ function Header() {
         </SubTitle>
       </Headers>
       <SearchMenu ss={breakpoint}>
-        <SearchMenuWrapper>
+        <SearchMenuWrapper ss={breakpoint}>
           <IconInputWrapper>
             <IconInput src={togle_icon} />
           </IconInputWrapper>
@@ -89,11 +101,18 @@ function Header() {
             <Symbol>-</Symbol>
           </Space>
           <IconWrapper2>
-            <Icon src={Calendar} ss={breakpoint}/>
+            <Icon src={Calendar} ss={breakpoint} />
           </IconWrapper2>
           <CheckOut ss={breakpoint}>Check-Out</CheckOut>
         </DatePickerWrapper>
-        {openCal && <Calender ss={breakpoint} />}
+        {openCal && (
+          <Calender ss={breakpoint} onChange={onChangeCalendar} />
+        )}
+        <GuestsWrapper ss={breakpoint}>
+          <IconWrapper>
+            <Icon src={Guest} />
+          </IconWrapper>
+        </GuestsWrapper>
         <Button
           title={'Search'}
           className={'SearchButton'}

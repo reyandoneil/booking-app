@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CalenderWrapper = styled.div`
   position: absolute;
   ${(props) => {
-    console.log(props.ss, 'elements');
+
 
     if (props.ss === 'sm' || props.ss === 'xs') {
       return `

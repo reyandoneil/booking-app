@@ -99,8 +99,18 @@ export const SearchMenu = styled.div`
 `;
 
 export const SearchMenuWrapper = styled.div`
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      width: 100%;  
+      `;
+    } else {
+      return `
+      width: 60%;  
+      `;
+    }
+  }}
   display: flex;
-  width: 100%;
   :hover {
     box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
   }
@@ -216,12 +226,12 @@ export const DatePickerWrapper = styled.button`
       flex-direction: row;
       width:400px;
       margin-left: 5px;
+      :hover {
+        box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
+      }
       `;
     }
   }}
-  :hover {
-    box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
-  }
 `;
 
 export const Space = styled.div`
@@ -264,7 +274,6 @@ export const Icon = styled.img`
   ${(props) => {
     if (props.ss === 'lg' || props.ss === 'md') {
       console.log(props, '<----');
-
       return `
       background-color: aliceblue;
       display: none;
@@ -288,3 +297,31 @@ export const IconWrapper2 = styled.div`
   align-items: center;
   margin-left: 10px;
 `;
+
+export const GuestsWrapper = styled.div`
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 52px;
+  margin-left: 5px;
+  :hover {
+    box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
+  }
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      width: 100% ;
+      margin-left: 0px;
+      margin-top: 5px;
+      `;
+    } else {
+      return `
+      width: 50%;
+      margin-left: 5px;
+      `;
+    }
+  }}
+`;
+
