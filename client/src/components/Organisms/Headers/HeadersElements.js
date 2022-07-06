@@ -9,14 +9,14 @@ export const HeadersContainer = styled.div`
     if (props.ss === 'sm') {
       return `
         margin-bottom: 25px;
-        padding-left: 3%;
-        padding-right: 3%;
+        padding-left: 1%;
+        padding-right: 1%;
         `;
     } else if (props.ss === 'xs') {
       return `
         margin-bottom: 25px;  
-        padding-left: 2%;
-        padding-right: 2%;
+        padding-left: 1%;
+        padding-right: 1%;
         `;
     } else {
       return `
@@ -88,6 +88,8 @@ export const SearchMenu = styled.div`
       flex-direction: column;
       font-size: 20px;
       top: 80px;
+      width: 94%;
+
 
       `;
     } else {
@@ -210,7 +212,7 @@ export const DatePickerWrapper = styled.button`
   border-color: transparent;
   background-color: white;
   cursor: pointer;
-  outline: 0;
+  padding: 0;
   display: flex;
   height: 52px;
   width: fit-content;
@@ -318,7 +320,7 @@ export const GuestsWrapper = styled.div`
       `;
     } else {
       return `
-      width: 50%;
+      width: 500px;
       margin-left: 5px;
       `;
     }

@@ -3,18 +3,15 @@ import styled from 'styled-components';
 export const CalenderWrapper = styled.div`
   position: absolute;
   ${(props) => {
-
-
     if (props.ss === 'sm' || props.ss === 'xs') {
       return `
-            top: 150px;
-        left:6%;
+            top: 220px;
 
         `;
-    } else if (props.ss === 'md') {
+    } else if (props.ss === 'md' || props.ss === 'lg'|| props.ss ==='xl') {
       return `
         top: 50px;
-        left:55%;
+        left:33%;
         `;
     } else {
       return `
@@ -23,4 +20,6 @@ export const CalenderWrapper = styled.div`
         `;
     }
   }}
+  box-shadow: 2px 16px 17px -15px rgba(0, 0, 0, 0.75);
+
 `;
