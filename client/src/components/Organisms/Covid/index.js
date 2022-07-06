@@ -20,7 +20,7 @@ function Covid() {
             href="https://kemlu.go.id/portal/id/page/72/covid-19%20update"
             target="_blank"
           >
-            Learn more
+            Learn more.
           </Links>
         </Text>
       </CovidMessage>

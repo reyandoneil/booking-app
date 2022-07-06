@@ -11,6 +11,8 @@ import hotel from './hotel.jpg';
 import apartment from './apartement.jpg';
 import resort from './resort.jpg';
 import villa from './villa.jpg';
+import Calendar from './calender.svg';
+import Guest from './guest.svg';
 
 export {
   boohotLogo,
@@ -26,4 +28,6 @@ export {
   apartment,
   resort,
   villa,
+  Calendar,
+  Guest,
 };

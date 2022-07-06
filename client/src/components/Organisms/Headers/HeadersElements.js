@@ -99,8 +99,21 @@ export const SearchMenu = styled.div`
 `;
 
 export const SearchMenuWrapper = styled.div`
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      width: 100%;  
+      `;
+    } else {
+      return `
+      width: 60%;  
+      `;
+    }
+  }}
   display: flex;
-  width: 100%;
+  :hover {
+    box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
+  }
 `;
 
 export const InputSearch = styled.input`
@@ -153,12 +166,13 @@ export const ClearInput = styled.img`
 
 export const CheckIn = styled.div`
   background-color: white;
-  height: 52px;
+  height: 100%;
+  width: 95%;
+  color: gray;
   ${(props) => {
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
       width: 100% ;
-      margin-top:3px;
 
       `;
     } else {
@@ -173,11 +187,12 @@ export const CheckIn = styled.div`
 `;
 export const CheckOut = styled.div`
   background-color: white;
-  height: 52px;
+  color: gray;
+  height: 100%;
+  width: 95%;
   ${(props) => {
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
-      margin-top:3px;
       width: 100% ;
       `;
     } else {
@@ -191,28 +206,35 @@ export const CheckOut = styled.div`
   align-items: center;
 `;
 
-export const DatePickerWrapper = styled.div`
+export const DatePickerWrapper = styled.button`
+  border-color: transparent;
+  background-color: white;
+  cursor: pointer;
+  outline: 0;
   display: flex;
   height: 52px;
+  width: fit-content;
   ${(props) => {
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
       flex-direction: row;
       width: 100% ;
-      
+      margin-top: 5px;
       `;
     } else {
       return `
       flex-direction: row;
       width:400px;
-      padding-left: 5px;
+      margin-left: 5px;
+      :hover {
+        box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
+      }
       `;
     }
   }}
 `;
 
 export const Space = styled.div`
-  height: 100%;
   width: 5px;
   display: flex;
   justify-content: center;
@@ -224,6 +246,13 @@ export const Space = styled.div`
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
       background-color: #febb02;  
+      height: 120%;
+      color: transparent;
+      `;
+    } else {
+      return `
+      height: 100%;
+      color: gray;
       `;
     }
   }}
@@ -239,3 +268,60 @@ export const Symbol = styled.span`
     }
   }}
 `;
+
+export const Icon = styled.img`
+  height: 50%;
+  ${(props) => {
+    if (props.ss === 'lg' || props.ss === 'md') {
+      console.log(props, '<----');
+      return `
+      background-color: aliceblue;
+      display: none;
+      `;
+    }
+  }}
+`;
+
+export const IconWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+`;
+
+export const IconWrapper2 = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+`;
+
+export const GuestsWrapper = styled.div`
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 52px;
+  margin-left: 5px;
+  :hover {
+    box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
+  }
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      width: 100% ;
+      margin-left: 0px;
+      margin-top: 5px;
+      `;
+    } else {
+      return `
+      width: 50%;
+      margin-left: 5px;
+      `;
+    }
+  }}
+`;
+

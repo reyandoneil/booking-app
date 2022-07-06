@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import {
   Headers,
   Title,
@@ -14,11 +15,21 @@ import {
   CheckOut,
   DatePickerWrapper,
   Space,
-  Symbol
+  Symbol,
+  Icon,
+  IconWrapper,
+  IconWrapper2,
+  GuestsWrapper,
 } from './HeadersElements';
-import { togle_icon, closeIcon } from '../../../Assets';
+import {
+  togle_icon,
+  closeIcon,
+  Calendar,
+  Guest,
+} from '../../../Assets';
 import { useSelector } from 'react-redux';
 import { Button } from '../../Atoms';
+import { Calender } from '../../Molecules';
 
 function Header() {
   const breakpoint = useSelector(
@@ -43,6 +54,16 @@ function Header() {
   const onClear = () => {
     setInput({ city: '' });
   };
+  //CALENDER
+  const [openCal, setOpenCal] = useState(false);
+  const [calender, setCalender] = useState();
+  const onChangeCalendar = (date) => {
+    setCalender(format(date, 'MM/dd/yyyy'));
+  };
+  const openCalender = () => {
+    setOpenCal(!openCal);
+  };
+  console.log(calender);
   return (
     <HeadersContainer ss={breakpoint}>
       <Headers>
@@ -54,7 +75,7 @@ function Header() {
         </SubTitle>
       </Headers>
       <SearchMenu ss={breakpoint}>
-        <SearchMenuWrapper>
+        <SearchMenuWrapper ss={breakpoint}>
           <IconInputWrapper>
             <IconInput src={togle_icon} />
           </IconInputWrapper>
@@ -71,13 +92,27 @@ function Header() {
             )}
           </IconInputWrapper>
         </SearchMenuWrapper>
-        <DatePickerWrapper ss={breakpoint}>
+        <DatePickerWrapper ss={breakpoint} onClick={openCalender}>
+          <IconWrapper>
+            <Icon src={Calendar} />
+          </IconWrapper>
           <CheckIn ss={breakpoint}>Check-In</CheckIn>
           <Space ss={breakpoint}>
             <Symbol>-</Symbol>
           </Space>
+          <IconWrapper2>
+            <Icon src={Calendar} ss={breakpoint} />
+          </IconWrapper2>
           <CheckOut ss={breakpoint}>Check-Out</CheckOut>
         </DatePickerWrapper>
+        {openCal && (
+          <Calender ss={breakpoint} onChange={onChangeCalendar} />
+        )}
+        <GuestsWrapper ss={breakpoint}>
+          <IconWrapper>
+            <Icon src={Guest} />
+          </IconWrapper>
+        </GuestsWrapper>
         <Button
           title={'Search'}
           className={'SearchButton'}

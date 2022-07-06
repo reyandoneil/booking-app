@@ -41,7 +41,7 @@ function BrowseByCity({ name }) {
   const dataHotelByType = useSelector(
     (state) => state.HotelsReducer?.dataHotelByType
   );
-  console.log(dataHotelByCity);
+
   useEffect(() => {
     dispatch(getHotelsByCity());
     dispatch(getHotelsByType());
