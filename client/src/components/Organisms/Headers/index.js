@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { format } from 'date-fns';
+import { format, addDays } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import {
   Headers,
   Title,
@@ -32,6 +33,7 @@ import { Button } from '../../Atoms';
 import { Calender } from '../../Molecules';
 
 function Header() {
+  const navigate = useNavigate();
   const breakpoint = useSelector(
     (state) => state.GlobalReducer.screenSize
   );
@@ -54,16 +56,28 @@ function Header() {
   const onClear = () => {
     setInput({ city: '' });
   };
+  //SEARCH BUTTON
+  const searchClick = () => {
+    navigate('/hotel');
+  };
   //CALENDER
   const [openCal, setOpenCal] = useState(false);
-  const [calender, setCalender] = useState();
+  const [calender, setCalender] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      key: 'selection',
+    },
+  ]);
+
   const onChangeCalendar = (date) => {
-    setCalender(format(date, 'MM/dd/yyyy'));
+    setCalender([date.selection]);
   };
+
   const openCalender = () => {
     setOpenCal(!openCal);
   };
-  console.log(calender);
+
   return (
     <HeadersContainer ss={breakpoint}>
       <Headers>
@@ -96,17 +110,29 @@ function Header() {
           <IconWrapper>
             <Icon src={Calendar} />
           </IconWrapper>
-          <CheckIn ss={breakpoint}>Check-In</CheckIn>
+          <CheckIn ss={breakpoint}>
+            {format(calender[0].startDate, 'EEE.dd.LLL')}
+          </CheckIn>
           <Space ss={breakpoint}>
             <Symbol>-</Symbol>
           </Space>
           <IconWrapper2>
             <Icon src={Calendar} ss={breakpoint} />
           </IconWrapper2>
-          <CheckOut ss={breakpoint}>Check-Out</CheckOut>
+          <CheckOut ss={breakpoint}>
+            {format(calender[0].endDate, 'EEE.dd.LLL')}
+          </CheckOut>
         </DatePickerWrapper>
         {openCal && (
-          <Calender ss={breakpoint} onChange={onChangeCalendar} />
+          <Calender
+            ss={breakpoint}
+            onChange={onChangeCalendar}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={1}
+            ranges={calender}
+            direction="horizontal"
+          />
         )}
         <GuestsWrapper ss={breakpoint}>
           <IconWrapper>
@@ -117,6 +143,7 @@ function Header() {
           title={'Search'}
           className={'SearchButton'}
           ss={breakpoint}
+          onClick={searchClick}
         />
       </SearchMenu>
     </HeadersContainer>

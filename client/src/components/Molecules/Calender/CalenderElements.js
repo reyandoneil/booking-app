@@ -10,12 +10,12 @@ export const CalenderWrapper = styled.div`
         `;
     } else if (props.ss === 'md' || props.ss === 'lg'|| props.ss ==='xl') {
       return `
-        top: 50px;
+        top: 70px;
         left:33%;
         `;
     } else {
       return `
-        top: 50px;
+        top: 70px;
         left:59%;
         `;
     }

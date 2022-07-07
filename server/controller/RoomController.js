@@ -16,7 +16,7 @@ class RoomController {
       }
       res.status(200).json(saveRoom);
     } catch (error) {
-      console.log('error');
+   
       res.status(500).json(error);
     }
   }
@@ -30,7 +30,7 @@ class RoomController {
       );
       res.status(200).json(updateRoom);
     } catch (error) {
-      console.log('error');
+  
       res.status(500).json(error);
     }
   }

@@ -5,7 +5,7 @@ import { Button } from '../../Atoms';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({name}) {
   const navigate = useNavigate();
   const breakpoint = useSelector(
     (state) => state.GlobalReducer.screenSize
@@ -22,7 +22,7 @@ function Navbar() {
       <Left>
         <Logo src={boohotLogo} />
       </Left>
-      <Right>
+      <Right name={name}>
         <Button title={'Register'} onClick={onClickRegister} />
         <Button title={'Sign in'} onClick={onClickLogin} />
       </Right>

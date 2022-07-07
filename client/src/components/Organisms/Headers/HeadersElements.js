@@ -123,7 +123,7 @@ export const InputSearch = styled.input`
   height: 50px;
   width: 100%;
   border: none;
-  color: black;
+  color: #343434;
 
   &:hover {
   }
@@ -144,7 +144,7 @@ export const InputSearch = styled.input`
   &:invalid:focus {
     background: #ffcece;
     box-shadow: none;
-    color: black;
+    color: #343434;
   }
 `;
 
@@ -170,7 +170,7 @@ export const CheckIn = styled.div`
   background-color: white;
   height: 100%;
   width: 95%;
-  color: gray;
+  color: #343434;
   ${(props) => {
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
@@ -189,7 +189,7 @@ export const CheckIn = styled.div`
 `;
 export const CheckOut = styled.div`
   background-color: white;
-  color: gray;
+  color: #343434;
   height: 100%;
   width: 95%;
   ${(props) => {
@@ -215,7 +215,7 @@ export const DatePickerWrapper = styled.button`
   padding: 0;
   display: flex;
   height: 52px;
-  width: fit-content;
+
   ${(props) => {
     if (props.ss === 'xs' || props.ss === 'sm') {
       return `
@@ -226,7 +226,7 @@ export const DatePickerWrapper = styled.button`
     } else {
       return `
       flex-direction: row;
-      width:400px;
+      width:700px;
       margin-left: 5px;
       :hover {
         box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
@@ -275,7 +275,6 @@ export const Icon = styled.img`
   height: 50%;
   ${(props) => {
     if (props.ss === 'lg' || props.ss === 'md') {
-      console.log(props, '<----');
       return `
       background-color: aliceblue;
       display: none;
@@ -326,4 +325,3 @@ export const GuestsWrapper = styled.div`
     }
   }}
 `;
-

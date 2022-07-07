@@ -21,6 +21,14 @@ export const ButtonWrapper = styled.button`
      
       `;
       }
+    } else if (props.className === 'sidebar') {
+      return `
+      width:100%;
+      background-color: #0071c2;
+      margin-left: 0px;
+      font-size:20px;
+      height:50px;
+      `;
     } else {
       return `
     margin-right: 20px;  
@@ -40,26 +48,31 @@ export const ButtonWrapper = styled.button`
   }
   &:hover {
     ${(props) => {
-      if(props.className === 'SearchButton'){
-        return`
+      if (
+        props.className === 'SearchButton' ||
+        props.className === 'sidebar'
+      ) {
+        return `
         background-color: #0085E5;
-        `
-      }else {
-        return`
+        `;
+      } else {
+        return `
         background-color: white;
-        `
+        `;
       }
     }}
-    }
-
+  }
 `;
 
 export const ButtonTitle = styled.span`
   ${(props) => {
-    if (props.className === 'SearchButton') {
+    if (
+      props.className === 'SearchButton' ||
+      props.className === 'sidebar'
+    ) {
       return `
       color: white;
-      font-size: 20px;
+      font-size: 16px;
     `;
     } else {
       return `  

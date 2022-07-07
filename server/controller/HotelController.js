@@ -15,7 +15,7 @@ class HotelController {
         const saveHotel = await newHotel.save();
         res.status(200).json(saveHotel);
       } catch (error) {
-        console.log('error');
+   
         res.status(500).json(error);
       }
     }
@@ -30,7 +30,7 @@ class HotelController {
       );
       res.status(200).json(updateHotel);
     } catch (error) {
-      console.log('error');
+
       res.status(500).json(error);
     }
   }
@@ -40,7 +40,7 @@ class HotelController {
       await Hotel.findByIdAndDelete(req.params.id);
       res.status(200).json('Success Deleted Hotel');
     } catch (error) {
-      console.log('error');
+  
       res.status(500).json(error);
     }
   }
@@ -57,7 +57,7 @@ class HotelController {
         data: hotels,
       });
     } catch (error) {
-      console.log('error');
+    
       res.status(500).json(error);
     }
   }

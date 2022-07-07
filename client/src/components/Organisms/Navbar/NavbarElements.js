@@ -34,10 +34,21 @@ export const Logo = styled.img`
 `;
 
 export const Right = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  ${(props) => {
+    if (props.name === '') {
+      return `
+      display:none;
+    `;
+    } else {
+      return `
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      
+    `;
+    }
+  }}
 `;
 
 export const Left = styled.div`
