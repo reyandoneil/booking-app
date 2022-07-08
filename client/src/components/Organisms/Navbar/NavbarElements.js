@@ -18,7 +18,12 @@ export const NavbarContainer = styled.div`
         padding-left: 2%;
         padding-right: 2%;
         `;
-    } else {
+    } else if(props.ss === 'xl'){
+      return`
+        padding-left: 23%;
+        padding-right: 23%;
+      `
+    }else {
       return `
         padding-left: 10%;
         padding-right: 10%;
@@ -30,7 +35,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 30px;
+  height:80%;
 `;
 
 export const Right = styled.div`

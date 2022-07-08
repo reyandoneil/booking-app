@@ -50,7 +50,7 @@ class HotelController {
     try {
       const hotels = await Hotel.find({
         ...oth,
-        cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+        cheapestPrice: { $gt: min | 200000, $lt: max || 999999999 },
       }).limit(req.query.limit);
       res.status(200).json({
         totalHotel: hotels.length,

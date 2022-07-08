@@ -18,6 +18,11 @@ export const HeadersContainer = styled.div`
         padding-left: 1%;
         padding-right: 1%;
         `;
+    } else if (props.ss === 'xl') {
+      return `
+        padding-left: 23%;
+        padding-right: 23%;
+      `;
     } else {
       return `
         margin-bottom: 50px;
@@ -91,6 +96,10 @@ export const SearchMenu = styled.div`
       width: 94%;
 
 
+      `;
+    } else if (props.ss === 'xl') {
+      return `
+        width: 55%;
       `;
     } else {
       return `
@@ -168,7 +177,7 @@ export const ClearInput = styled.img`
 
 export const CheckIn = styled.div`
   background-color: white;
-  font-weight:bold ;
+  font-weight: bold;
   height: 100%;
   width: 95%;
   color: #343434;
@@ -191,7 +200,7 @@ export const CheckIn = styled.div`
 export const CheckOut = styled.div`
   background-color: white;
   color: #343434;
-  font-weight:bold ;
+  font-weight: bold;
   height: 100%;
   width: 95%;
   ${(props) => {
@@ -228,7 +237,7 @@ export const DatePickerWrapper = styled.button`
     } else {
       return `
       flex-direction: row;
-      width:700px;
+      width:600px;
       margin-left: 5px;
       :hover {
         box-shadow: 6px 11px 5px -8px rgba(0, 0, 0, 0.4);
@@ -320,9 +329,68 @@ export const GuestsWrapper = styled.div`
       `;
     } else {
       return `
-      width: 500px;
+      width: 600px;
       margin-left: 5px;
       `;
     }
   }}
+`;
+
+export const FormComp = styled.div`
+  top: 70px;
+  right: 17%;
+  padding: 10px;
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      margin-top: 5px;
+      max-width: 100%;
+      height: 200px;
+      background-color: white;
+    `;
+    } else {
+      return `
+      position: absolute;
+      width: 230px;
+      min-height: 200px;
+      background-color: white;
+      `;
+    }
+  }}
+`;
+export const GuestInputWrapper = styled.div`
+  display: flex;
+  margin-top: 15px;
+`;
+export const GuestGroup = styled.div`
+  width: 50%;
+`;
+export const TitleGroup = styled.div`
+  padding-left: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+`;
+export const GuestGroupButton = styled.div`
+width: 50%;
+`;
+export const Count = styled.span`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+export const ButtonMin = styled.button`
+  cursor: pointer;
+  font-size: 20px;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-color: #0085e5;
+  color: #0085e5;
+  border-style: groove;
+
+  &:valid:focus {
+    background: white;
+    outline: solid 1px #0071c2;
+  }
 `;

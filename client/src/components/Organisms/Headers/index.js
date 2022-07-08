@@ -21,6 +21,13 @@ import {
   IconWrapper,
   IconWrapper2,
   GuestsWrapper,
+  FormComp,
+  GuestGroup,
+  GuestGroupButton,
+  GuestInputWrapper,
+  TitleGroup,
+  Count,
+  ButtonMin,
 } from './HeadersElements';
 import {
   togle_icon,
@@ -61,8 +68,8 @@ function Header() {
     navigate('/hotel');
   };
   //CALENDER
-  const [checkin, setChheckin] = useState('Check-In')
-  const [checkout, setChheckout] = useState('Check-Out')
+  const [checkin, setChheckin] = useState('Check-In');
+  const [checkout, setChheckout] = useState('Check-Out');
   const [openCal, setOpenCal] = useState(false);
   const [calender, setCalender] = useState([
     {
@@ -76,16 +83,59 @@ function Header() {
     setCalender([date.selection]);
   };
   useEffect(() => {
-    setChheckin(format(calender[0].startDate, 'EEE, dd LLL'))
-    setChheckout(format(calender[0].endDate, 'EEE, dd LLL'))
-
-  }, [calender])
-
+    setChheckin(format(calender[0].startDate, 'EEE, dd LLL'));
+    setChheckout(format(calender[0].endDate, 'EEE, dd LLL'));
+  }, [calender]);
 
   const openCalender = () => {
     setOpenCal(!openCal);
   };
 
+  //GUEST
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [disableButton, setDisableButton] = useState(false);
+  const [disableButtonAdult, setDisableButtonAdult] = useState(false);
+
+  //
+  const plus = () => {
+    setChildren(children + 1);
+  };
+  const min = () => {
+    if (children !== 0) {
+      setChildren(children - 1);
+    }
+  };
+  //
+  const plusAdults = () => {
+    setAdults(adults + 1);
+  };
+  const minAdults = () => {
+    if (adults !== 0) {
+      setAdults(adults - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (children === 10) {
+      setDisableButton(true);
+    } else {
+      setDisableButton(false);
+    }
+  }, [children]);
+
+  useEffect(() => {
+    if (adults === 20) {
+      setDisableButtonAdult(true);
+    } else {
+      setDisableButtonAdult(false);
+    }
+  }, [adults]);
+  //OPEN GUESTS LIST
+  const [isGuest, setIsGuest] = useState(false);
+  const openGuestForm = () => {
+    setIsGuest(!isGuest);
+  };
   return (
     <HeadersContainer ss={breakpoint}>
       <Headers>
@@ -118,18 +168,14 @@ function Header() {
           <IconWrapper>
             <Icon src={Calendar} />
           </IconWrapper>
-          <CheckIn ss={breakpoint}>
-            {checkin}
-          </CheckIn>
+          <CheckIn ss={breakpoint}>{checkin}</CheckIn>
           <Space ss={breakpoint}>
             <Symbol>-</Symbol>
           </Space>
           <IconWrapper2>
             <Icon src={Calendar} ss={breakpoint} />
           </IconWrapper2>
-          <CheckOut ss={breakpoint}>
-            {checkout}
-          </CheckOut>
+          <CheckOut ss={breakpoint}>{checkout}</CheckOut>
         </DatePickerWrapper>
         {openCal && (
           <Calender
@@ -142,11 +188,42 @@ function Header() {
             direction="horizontal"
           />
         )}
-        <GuestsWrapper ss={breakpoint}>
+        <GuestsWrapper ss={breakpoint} onClick={openGuestForm}>
           <IconWrapper>
             <Icon src={Guest} />
+            <TitleGroup>{adults} Adults </TitleGroup>
+            <TitleGroup>- </TitleGroup>
+            <TitleGroup>{children} Children </TitleGroup>
           </IconWrapper>
         </GuestsWrapper>
+        {isGuest && (
+          <FormComp ss={breakpoint}>
+            <GuestInputWrapper>
+              <GuestGroup>
+                <TitleGroup>Adults</TitleGroup>
+              </GuestGroup>
+              <GuestGroupButton>
+                <ButtonMin onClick={minAdults}>-</ButtonMin>
+                <Count>{adults}</Count>
+                {!disableButtonAdult && (
+                  <ButtonMin onClick={plusAdults}>+</ButtonMin>
+                )}
+              </GuestGroupButton>
+            </GuestInputWrapper>
+            <GuestInputWrapper>
+              <GuestGroup>
+                <TitleGroup>Children</TitleGroup>
+              </GuestGroup>
+              <GuestGroupButton>
+                <ButtonMin onClick={min}>-</ButtonMin>
+                <Count>{children}</Count>
+                {!disableButton && (
+                  <ButtonMin onClick={plus}>+</ButtonMin>
+                )}
+              </GuestGroupButton>
+            </GuestInputWrapper>
+          </FormComp>
+        )}
         <Button
           title={'Search'}
           className={'SearchButton'}

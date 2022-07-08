@@ -14,6 +14,11 @@ export const BrowseByCityWrapper = styled.div`
         padding-left: 2%;
         padding-right: 2%;
         `;
+    } else if (props.ss === 'xl') {
+      return `
+        padding-left: 23%;
+        padding-right: 23%;
+        `;
     } else {
       return `
         padding-left: 10%;
@@ -63,18 +68,18 @@ export const CardContainer = styled(Slider)`
 `;
 
 export const Card = styled.div`
-${(props => {
-  if(props.name === 'city'){
-    return`
+  ${(props) => {
+    if (props.name === 'city') {
+      return `
     height: 300px;
-    width: 300px;`
-  }else{
-    return`     
+    width: 300px;`;
+    } else {
+      return `     
     height: 200px;
     width: 200px;
-    `
-  }
-})}
+    `;
+    }
+  }}
   cursor: pointer;
 `;
 

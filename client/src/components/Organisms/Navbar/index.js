@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavbarContainer, Left, Logo, Right } from './NavbarElements';
-import { boohotLogo } from '../../../Assets';
+import { Boon } from '../../../Assets';
 import { Button } from '../../Atoms';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ function Navbar({name}) {
   return (
     <NavbarContainer ss={breakpoint}>
       <Left>
-        <Logo src={boohotLogo} />
+        <Logo src={Boon}/>
       </Left>
       <Right name={name}>
         <Button title={'Register'} onClick={onClickRegister} />

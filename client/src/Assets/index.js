@@ -13,6 +13,8 @@ import resort from './resort.jpg';
 import villa from './villa.jpg';
 import Calendar from './calender.svg';
 import Guest from './guest.svg';
+import Boon from './boon.svg';
+
 
 export {
   boohotLogo,
@@ -30,4 +32,5 @@ export {
   villa,
   Calendar,
   Guest,
+  Boon
 };
