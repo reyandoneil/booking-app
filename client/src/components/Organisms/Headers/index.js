@@ -61,6 +61,8 @@ function Header() {
     navigate('/hotel');
   };
   //CALENDER
+  const [checkin, setChheckin] = useState('Check-In')
+  const [checkout, setChheckout] = useState('Check-Out')
   const [openCal, setOpenCal] = useState(false);
   const [calender, setCalender] = useState([
     {
@@ -73,6 +75,12 @@ function Header() {
   const onChangeCalendar = (date) => {
     setCalender([date.selection]);
   };
+  useEffect(() => {
+    setChheckin(format(calender[0].startDate, 'EEE, dd LLL'))
+    setChheckout(format(calender[0].endDate, 'EEE, dd LLL'))
+
+  }, [calender])
+
 
   const openCalender = () => {
     setOpenCal(!openCal);
@@ -111,7 +119,7 @@ function Header() {
             <Icon src={Calendar} />
           </IconWrapper>
           <CheckIn ss={breakpoint}>
-            {format(calender[0].startDate, 'EEE.dd.LLL')}
+            {checkin}
           </CheckIn>
           <Space ss={breakpoint}>
             <Symbol>-</Symbol>
@@ -120,7 +128,7 @@ function Header() {
             <Icon src={Calendar} ss={breakpoint} />
           </IconWrapper2>
           <CheckOut ss={breakpoint}>
-            {format(calender[0].endDate, 'EEE.dd.LLL')}
+            {checkout}
           </CheckOut>
         </DatePickerWrapper>
         {openCal && (

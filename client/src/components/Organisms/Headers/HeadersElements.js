@@ -168,6 +168,7 @@ export const ClearInput = styled.img`
 
 export const CheckIn = styled.div`
   background-color: white;
+  font-weight:bold ;
   height: 100%;
   width: 95%;
   color: #343434;
@@ -190,6 +191,7 @@ export const CheckIn = styled.div`
 export const CheckOut = styled.div`
   background-color: white;
   color: #343434;
+  font-weight:bold ;
   height: 100%;
   width: 95%;
   ${(props) => {
@@ -274,9 +276,8 @@ export const Symbol = styled.span`
 export const Icon = styled.img`
   height: 50%;
   ${(props) => {
-    if (props.ss === 'lg' || props.ss === 'md') {
+    if (props.ss === 'lg' || props.ss === 'md' || props.ss === 'xl') {
       return `
-      background-color: aliceblue;
       display: none;
       `;
     }
