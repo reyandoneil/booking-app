@@ -12,7 +12,18 @@ export const ListHotelContainer = styled.div`
         padding-left: 1%;
         padding-right: 1%;
         `;
-    } else if (props.ss === 'xs') {
+    }else if(props.ss === 'xl'){
+      return`
+        padding-left: 20%;
+        padding-right: 20%;
+      `
+    } 
+    else if(props.ss === 'lg'){
+      return`
+        padding-left: 20%;
+        padding-right: 20%;
+      `
+    }else if (props.ss === 'xs') {
       return `
         margin-bottom: 25px;  
         padding-left: 1%;
@@ -34,10 +45,14 @@ export const ContentContainer = styled.div`
   display: flex;
 `;
 export const SearchWrapper = styled.div`
-  width: 264px;
+  min-width: 264px;
   height: 100%;
 
 `;
 export const ListHotelWrapper = styled.div`
   margin: 14px;
+  min-width: 640px ;
 `;
+
+export const Text = styled.h2`
+`

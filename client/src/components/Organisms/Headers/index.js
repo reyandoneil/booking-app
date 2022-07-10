@@ -35,15 +35,22 @@ import {
   Calendar,
   Guest,
 } from '../../../Assets';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { openCalendar, openGuestForm } from '../../../store/Action/GlobalAction'
 import { Button } from '../../Atoms';
 import { Calender } from '../../Molecules';
+import { useOutSide } from '../../../utils'
+import {serchProperty} from '../../../store/Action/HotelAction'
 
 function Header() {
+  const { ref } = useOutSide('guestForm')
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const breakpoint = useSelector(
     (state) => state.GlobalReducer.screenSize
   );
+  const isCalendar = useSelector((state) => state.GlobalReducer.isCalendar)
+  const isGuestForm = useSelector((state) => state.GlobalReducer.isGuestForm)
   const [input, setInput] = useState({
     city: '',
   });
@@ -65,12 +72,15 @@ function Header() {
   };
   //SEARCH BUTTON
   const searchClick = () => {
-    navigate('/hotel');
+    if(input.city.length !== 0){
+
+      dispatch(serchProperty(input.city))
+      navigate('/hotel');
+    }
   };
   //CALENDER
   const [checkin, setChheckin] = useState('Check-In');
   const [checkout, setChheckout] = useState('Check-Out');
-  const [openCal, setOpenCal] = useState(false);
   const [calender, setCalender] = useState([
     {
       startDate: new Date(),
@@ -88,7 +98,7 @@ function Header() {
   }, [calender]);
 
   const openCalender = () => {
-    setOpenCal(!openCal);
+    dispatch(openCalendar(true))
   };
 
   //GUEST
@@ -132,9 +142,8 @@ function Header() {
     }
   }, [adults]);
   //OPEN GUESTS LIST
-  const [isGuest, setIsGuest] = useState(false);
-  const openGuestForm = () => {
-    setIsGuest(!isGuest);
+  const openGuestFormHandler = () => {
+    dispatch(openGuestForm(true))
   };
   return (
     <HeadersContainer ss={breakpoint}>
@@ -177,7 +186,7 @@ function Header() {
           </IconWrapper2>
           <CheckOut ss={breakpoint}>{checkout}</CheckOut>
         </DatePickerWrapper>
-        {openCal && (
+        {isCalendar && (
           <Calender
             ss={breakpoint}
             onChange={onChangeCalendar}
@@ -188,7 +197,7 @@ function Header() {
             direction="horizontal"
           />
         )}
-        <GuestsWrapper ss={breakpoint} onClick={openGuestForm}>
+        <GuestsWrapper ss={breakpoint} onClick={openGuestFormHandler}>
           <IconWrapper>
             <Icon src={Guest} />
             <TitleGroup>{adults} Adults </TitleGroup>
@@ -196,8 +205,8 @@ function Header() {
             <TitleGroup>{children} Children </TitleGroup>
           </IconWrapper>
         </GuestsWrapper>
-        {isGuest && (
-          <FormComp ss={breakpoint}>
+        {isGuestForm && (
+          <FormComp ss={breakpoint} ref={ref}>
             <GuestInputWrapper>
               <GuestGroup>
                 <TitleGroup>Adults</TitleGroup>

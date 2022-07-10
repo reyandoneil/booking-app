@@ -4,6 +4,8 @@ import BrowseByCity from '../Organisms/BrowseByCity';
 import CovidMessage from '../Organisms/Covid';
 import Footer from '../Organisms/Footer';
 import Sidebar from '../Organisms/Sidebar'
+import CardProperty from '../Organisms/CardProperty'
+
 
 export {
   Navbar,
@@ -11,5 +13,6 @@ export {
   BrowseByCity,
   CovidMessage,
   Footer,
-  Sidebar
+  Sidebar,
+  CardProperty
 };
