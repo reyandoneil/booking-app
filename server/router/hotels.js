@@ -57,6 +57,9 @@ const authentication = require('../utils/authentication');
  *  description: The Hotels API
  */
 
+route.get('/', HotelController.getAll);
+route.get('/countByCity', HotelController.countByCity);
+route.get('/countByType', HotelController.countByType);
 // route.use(authentication);
 //CREATE
 route.post('/', HotelController.createHotel);
@@ -86,9 +89,6 @@ route.delete('/:id', HotelController.deleteHotel);
  *                          id: 62af10f7486d101c58003625
  * 
  */
-route.get('/', HotelController.getAll);
-route.get('/countByCity', HotelController.countByCity);
-route.get('/countByType', HotelController.countByType);
 
 //GET by ID
 /**

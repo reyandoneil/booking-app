@@ -18,10 +18,17 @@ export const CovidMessageWrapper = styled.div`
         padding-right: 2%;
         margin: 20px 0px 20px 0px;
         `;
+    } else if (props.ss === 'lg') {
+      return `
+        padding-left: 15%;
+        padding-right: 15%;
+        margin: 70px 0px 20px 0px;
+
+      `;
     } else if (props.ss === 'xl') {
       return `
-        padding-left: 23%;
-        padding-right: 23%;
+        padding-left: 20%;
+        padding-right: 20%;
         margin: 70px 0px 20px 0px;
       `;
     } else {

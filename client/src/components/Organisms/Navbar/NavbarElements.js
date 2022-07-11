@@ -5,7 +5,7 @@ export const NavbarContainer = styled.div`
   top: 0;
   z-index: 9999;
   background-color: #003580;
-  height: 60px;
+  height: 80px;
   max-width: 100%;
   ${(props) => {
     if (props.ss === 'sm') {
@@ -18,12 +18,17 @@ export const NavbarContainer = styled.div`
         padding-left: 2%;
         padding-right: 2%;
         `;
-    } else if(props.ss === 'xl'){
-      return`
-        padding-left: 23%;
-        padding-right: 23%;
-      `
-    }else {
+    } else if (props.ss === 'xl') {
+      return `
+        padding-left: 20%;
+        padding-right: 20%;
+      `;
+    } else if (props.ss === 'lg') {
+      return `
+        padding-left: 15%;
+        padding-right: 15%;
+      `;
+    } else {
       return `
         padding-left: 10%;
         padding-right: 10%;
@@ -35,7 +40,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-  height:80%;
+  height: 80%;
 `;
 
 export const Right = styled.div`

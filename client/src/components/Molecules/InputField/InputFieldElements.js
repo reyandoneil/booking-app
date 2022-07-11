@@ -6,7 +6,7 @@ export const Input = styled.input`
   width: 98%;
   border: none;
   color: #343434;
-  /* margin-top: 5px; */
+  padding: 3px;
   &:hover {
   }
   &:focus {

@@ -20,8 +20,13 @@ export const HeadersContainer = styled.div`
         `;
     } else if (props.ss === 'xl') {
       return `
-        padding-left: 23%;
-        padding-right: 23%;
+        padding-left: 20%;
+        padding-right: 20%;
+      `;
+    } else if (props.ss === 'lg') {
+      return `
+        padding-left: 15%;
+        padding-right: 15%;
       `;
     } else {
       return `
@@ -97,9 +102,13 @@ export const SearchMenu = styled.div`
 
 
       `;
+    } else if (props.ss === 'lg') {
+      return `
+        width: 75%;
+      `;
     } else if (props.ss === 'xl') {
       return `
-        width: 55%;
+        width: 65%;
       `;
     } else {
       return `
@@ -373,7 +382,7 @@ export const TitleGroup = styled.div`
   font-size: 14px;
 `;
 export const GuestGroupButton = styled.div`
-width: 50%;
+  width: 50%;
 `;
 export const Count = styled.span`
   margin-left: 10px;

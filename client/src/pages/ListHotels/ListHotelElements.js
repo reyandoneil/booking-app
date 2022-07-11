@@ -20,8 +20,8 @@ export const ListHotelContainer = styled.div`
     } 
     else if(props.ss === 'lg'){
       return`
-        padding-left: 20%;
-        padding-right: 20%;
+        padding-left: 15%;
+        padding-right: 15%;
       `
     }else if (props.ss === 'xs') {
       return `
@@ -56,3 +56,4 @@ export const ListHotelWrapper = styled.div`
 
 export const Text = styled.h2`
 `
+

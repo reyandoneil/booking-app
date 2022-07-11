@@ -7,6 +7,7 @@ function InputCom({
   value,
   name,
   label,
+  defaultValue,
 }) {
   return (
     <>
@@ -18,6 +19,7 @@ function InputCom({
           onChange={onChange}
           value={value}
           name={name}
+          defaultValue={defaultValue}
         />
       </InputWrapper>
     </>

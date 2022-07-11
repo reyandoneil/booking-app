@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const SidebarWrapper = styled.div`
   max-width: 100%;
-  height: 420px;
+  height: 520px;
   background-color: #febb02;
   border-radius: 7px;
   padding: 16px;
@@ -13,5 +13,5 @@ export const Title = styled.span`
 `;
 
 export const InputFieldWrapper = styled.div`
-    height: 70%;
+  height: 70%;
 `;

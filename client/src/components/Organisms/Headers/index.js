@@ -36,23 +36,32 @@ import {
   Guest,
 } from '../../../Assets';
 import { useSelector, useDispatch } from 'react-redux';
-import { openCalendar, openGuestForm } from '../../../store/Action/GlobalAction'
+import {
+  openCalendar,
+  openGuestForm,
+} from '../../../store/Action/GlobalAction';
 import { Button } from '../../Atoms';
 import { Calender } from '../../Molecules';
-import { useOutSide } from '../../../utils'
-import {serchProperty} from '../../../store/Action/HotelAction'
+import { useOutSide } from '../../../utils';
+import { serchProperty } from '../../../store/Action/HotelAction';
 
 function Header() {
-  const { ref } = useOutSide('guestForm')
+  const { ref } = useOutSide('guestForm');
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const breakpoint = useSelector(
     (state) => state.GlobalReducer.screenSize
   );
-  const isCalendar = useSelector((state) => state.GlobalReducer.isCalendar)
-  const isGuestForm = useSelector((state) => state.GlobalReducer.isGuestForm)
+  const isCalendar = useSelector(
+    (state) => state.GlobalReducer.isCalendar
+  );
+  const isGuestForm = useSelector(
+    (state) => state.GlobalReducer.isGuestForm
+  );
   const [input, setInput] = useState({
     city: '',
+    min:100000,
+    max:2000000
   });
   const [isClear, setIsClear] = useState(false);
   useEffect(() => {
@@ -72,9 +81,8 @@ function Header() {
   };
   //SEARCH BUTTON
   const searchClick = () => {
-    if(input.city.length !== 0){
-
-      dispatch(serchProperty(input.city))
+    if (input.city.length !== 0) {
+      dispatch(serchProperty(input.city,input.min,input.max));
       navigate('/hotel');
     }
   };
@@ -98,7 +106,7 @@ function Header() {
   }, [calender]);
 
   const openCalender = () => {
-    dispatch(openCalendar(true))
+    dispatch(openCalendar(true));
   };
 
   //GUEST
@@ -143,7 +151,7 @@ function Header() {
   }, [adults]);
   //OPEN GUESTS LIST
   const openGuestFormHandler = () => {
-    dispatch(openGuestForm(true))
+    dispatch(openGuestForm(true));
   };
   return (
     <HeadersContainer ss={breakpoint}>

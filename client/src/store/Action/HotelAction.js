@@ -5,7 +5,7 @@ import {
   SET_LOADING,
   ERROR_FROM_HOTEL,
   GET_HOTEL,
-  SET_CITY
+  SET_CITY,
 } from './index';
 import { Delay } from '../../utils';
 const url = 'http://localhost:3001/hotels/';
@@ -86,28 +86,31 @@ export const getHotelsByType = () => {
   };
 };
 
-export const serchProperty = (city) => {
+export const serchProperty = (city, min, max) => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      dispatch(setLoading(false))
+      console.log(data);
+      dispatch(setLoading(false));
       dispatch({
         type: GET_HOTEL,
         payload: data.data,
       });
-    }
+    };
     const onError = (error) => {
       dispatch({
         type: ERROR_FROM_HOTEL,
         payload: error,
       });
-    }
+    };
     try {
-      dispatch(setLoading(true))
-      dispatch(setCity(city))
-      const data = await axios.get(`${url}?city=${city}`)
-      onSuccess(data)
+      dispatch(setLoading(true));
+      dispatch(setCity(city));
+      const data = await axios.get(
+        `${url}?city=${city}&limit=4&min=${min}&max=${max}`
+      );
+      onSuccess(data);
     } catch (error) {
-      onError(error)
+      onError(error);
     }
-  }
-}
+  };
+};

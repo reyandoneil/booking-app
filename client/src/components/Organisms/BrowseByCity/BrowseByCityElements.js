@@ -14,10 +14,16 @@ export const BrowseByCityWrapper = styled.div`
         padding-left: 2%;
         padding-right: 2%;
         `;
-    } else if (props.ss === 'xl') {
+    } 
+    else if(props.ss === 'lg'){
+      return`
+        padding-left: 15%;
+        padding-right: 15%;
+      `
+    }else if (props.ss === 'xl') {
       return `
-        padding-left: 23%;
-        padding-right: 23%;
+        padding-left: 20%;
+        padding-right: 20%;
         `;
     } else {
       return `
