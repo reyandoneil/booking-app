@@ -16,7 +16,7 @@ function Reducer(state = initialState, { type, payload }) {
       return { ...state, dataHotel: payload };
     case 'SET_CITY':
       return { ...state, city: payload };
-    case 'SET_Loading':
+    case 'SET_LOADING':
       return { ...state, loading: payload };
     default:
       return state;

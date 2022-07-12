@@ -6,7 +6,6 @@ import {
 import { useDispatch } from 'react-redux';
 
 export default function useOutsideHandler(name) {
-  console.log(name);
   const dispatch = useDispatch();
   const ref = useRef(null);
   const handleClick = (e) => {

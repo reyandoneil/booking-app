@@ -41,6 +41,7 @@ export const NavbarContainer = styled.div`
 
 export const Logo = styled.img`
   height: 80%;
+  cursor: pointer;
 `;
 
 export const Right = styled.div`

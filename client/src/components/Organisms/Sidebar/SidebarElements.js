@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 export const SidebarWrapper = styled.div`
-  max-width: 100%;
-  height: 520px;
+  width: 230px;
+  height: 480px;
   background-color: #febb02;
   border-radius: 7px;
   padding: 16px;
+  position: fixed;
 `;
 export const Title = styled.span`
   font-size: 20px;

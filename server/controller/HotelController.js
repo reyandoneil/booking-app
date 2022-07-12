@@ -9,13 +9,12 @@ class HotelController {
       name: req.body.name,
     });
     if (findHotelName) {
-      next(errorHandler(404, 'Hotel name alredy used'));
+      next(errorHandler(404, 'Hotel name already used'));
     } else {
       try {
         const saveHotel = await newHotel.save();
         res.status(200).json(saveHotel);
       } catch (error) {
-   
         res.status(500).json(error);
       }
     }
@@ -30,7 +29,6 @@ class HotelController {
       );
       res.status(200).json(updateHotel);
     } catch (error) {
-
       res.status(500).json(error);
     }
   }
@@ -40,7 +38,6 @@ class HotelController {
       await Hotel.findByIdAndDelete(req.params.id);
       res.status(200).json('Success Deleted Hotel');
     } catch (error) {
-  
       res.status(500).json(error);
     }
   }
@@ -57,8 +54,7 @@ class HotelController {
         data: hotels,
       });
     } catch (error) {
-    
-      res.status(500).json(error);
+      next(errorHandler(500, 'Hotel was not found'));
     }
   }
 

@@ -11,7 +11,6 @@ import { Delay } from '../../utils';
 const url = 'http://localhost:3001/hotels/';
 
 export const setCity = (payload) => {
-  console.log(payload, '<---action');
   return {
     type: SET_CITY,
     payload,
@@ -86,14 +85,15 @@ export const getHotelsByType = () => {
   };
 };
 
-export const serchProperty = (city, min, max) => {
+export const searchProperty = (city, min, max) => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      console.log(data);
-      dispatch(setLoading(false));
-      dispatch({
-        type: GET_HOTEL,
-        payload: data.data,
+      Delay(6000).then(() => {
+        dispatch(setLoading(false));
+        dispatch({
+          type: GET_HOTEL,
+          payload: data.data,
+        });
       });
     };
     const onError = (error) => {
@@ -104,6 +104,7 @@ export const serchProperty = (city, min, max) => {
     };
     try {
       dispatch(setLoading(true));
+      localStorage.setItem('city', JSON.stringify(city));
       dispatch(setCity(city));
       const data = await axios.get(
         `${url}?city=${city}&limit=4&min=${min}&max=${max}`

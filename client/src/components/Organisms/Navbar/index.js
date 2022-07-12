@@ -17,10 +17,15 @@ function Navbar({ name }) {
     navigate('/login');
   };
 
+  const OnClickHome = () => {
+
+    navigate('/home');
+  };
+
   return (
     <NavbarContainer ss={breakpoint}>
       <Left>
-        <Logo src={Boon} />
+        <Logo src={Boon} onClick={OnClickHome} />
       </Left>
       <Right name={name}>
         <Button title={'Register'} onClick={onClickRegister} />

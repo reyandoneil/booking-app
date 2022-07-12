@@ -18,6 +18,7 @@ import {
   TopLeftRight,
   Availabillty,
 } from './CardPropertyElements';
+import { RupiahFormat } from '../../../utils';
 
 function CardProperty({ img, name, distance, city, price, ss }) {
   return (
@@ -48,7 +49,7 @@ function CardProperty({ img, name, distance, city, price, ss }) {
         <LeftRight>
           <TopLeftRight></TopLeftRight>
           <BottomLeftRight>
-            <Price>Rp {price}</Price>
+            <Price>{RupiahFormat(price)}</Price>
             <SubText>Include taxes and charges</SubText>
             <Availabillty>See Availabillty</Availabillty>
           </BottomLeftRight>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardPropertyContainer = styled.div`
   height: fit-content;
-  min-width: 100%;
+  min-width: fit-content;
   margin: 20px 0 0 0;
   border-width: 1px;
   border-color: #e5e5e5;

@@ -41,9 +41,9 @@ import {
   openGuestForm,
 } from '../../../store/Action/GlobalAction';
 import { Button } from '../../Atoms';
-import { Calender } from '../../Molecules';
+import { Calender, ErrorMessage } from '../../Molecules';
 import { useOutSide } from '../../../utils';
-import { serchProperty } from '../../../store/Action/HotelAction';
+import { searchProperty } from '../../../store/Action/HotelAction';
 
 function Header() {
   const { ref } = useOutSide('guestForm');
@@ -60,17 +60,18 @@ function Header() {
   );
   const [input, setInput] = useState({
     city: '',
-    min:100000,
-    max:2000000
+    min: 100000,
+    max: 2000000,
   });
   const [isClear, setIsClear] = useState(false);
   useEffect(() => {
     if (input.city.length === 0) {
       setIsClear(false);
     } else {
+      setIsCity(false)
       setIsClear(true);
     }
-  }, [input.city.length]);
+  }, [input.city.length, isClear]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -80,15 +81,18 @@ function Header() {
     setInput({ city: '' });
   };
   //SEARCH BUTTON
+  const [isCity, setIsCity] = useState(false);
   const searchClick = () => {
     if (input.city.length !== 0) {
-      dispatch(serchProperty(input.city,input.min,input.max));
+      dispatch(searchProperty(input.city, input.min, input.max));
       navigate('/hotel');
+    } else {
+      setIsCity(true);
     }
   };
   //CALENDER
-  const [checkin, setChheckin] = useState('Check-In');
-  const [checkout, setChheckout] = useState('Check-Out');
+  const [checkin, setCheckin] = useState('Check-In');
+  const [checkout, setCheckout] = useState('Check-Out');
   const [calender, setCalender] = useState([
     {
       startDate: new Date(),
@@ -101,8 +105,8 @@ function Header() {
     setCalender([date.selection]);
   };
   useEffect(() => {
-    setChheckin(format(calender[0].startDate, 'EEE, dd LLL'));
-    setChheckout(format(calender[0].endDate, 'EEE, dd LLL'));
+    setCheckin(format(calender[0].startDate, 'EEE, dd LLL'));
+    setCheckout(format(calender[0].endDate, 'EEE, dd LLL'));
   }, [calender]);
 
   const openCalender = () => {
@@ -153,6 +157,8 @@ function Header() {
   const openGuestFormHandler = () => {
     dispatch(openGuestForm(true));
   };
+
+
   return (
     <HeadersContainer ss={breakpoint}>
       <Headers>
@@ -181,6 +187,12 @@ function Header() {
             )}
           </IconInputWrapper>
         </SearchMenuWrapper>
+        {isCity && (
+          <ErrorMessage
+            ss={breakpoint}
+            message={'Please enter a destination to start searching.'}
+          />
+        )}
         <DatePickerWrapper ss={breakpoint} onClick={openCalender}>
           <IconWrapper>
             <Icon src={Calendar} />

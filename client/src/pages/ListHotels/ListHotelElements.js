@@ -51,7 +51,9 @@ export const SearchWrapper = styled.div`
 `;
 export const ListHotelWrapper = styled.div`
   margin: 14px;
-  min-width: 640px ;
+  min-width: fit-content ;
+  height: fit-content;
+  margin-bottom: 600px;
 `;
 
 export const Text = styled.h2`

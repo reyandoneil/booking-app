@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { InputField } from '../../Molecules';
+import { useState } from 'react';
+import { InputField, ErrorMessage } from '../../Molecules';
 import { Button } from '../../Atoms';
 import { useDispatch } from 'react-redux';
-import { serchProperty } from '../../../store/Action/HotelAction';
+import { searchProperty } from '../../../store/Action/HotelAction';
 import {
   SidebarWrapper,
   Title,
@@ -11,20 +11,25 @@ import {
 
 function Sidebar() {
   const dispatch = useDispatch();
+  const [isCity, setIsCity] = useState(false);
   const [values, setValues] = useState({
-    city: 'jakarta',
+    city: '',
     min: 100000,
     max: 2000000,
   });
 
   //CLICK SEARCH
   const onClickSearch = () => {
-    dispatch(serchProperty(values.city, values.min, values.max));
+    if (values.city.length === 0) {
+      setIsCity(true);
+    } else {
+      setIsCity(false);
+      dispatch(searchProperty(values.city, values.min, values.max));
+    }
   };
-  //
-  // useEffect(() => {
-  //   dispatch(serchProperty(values.city, values.min, values.max));
-  // }, []);
+
+  const newcity = JSON.parse(localStorage.getItem('city'));
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
@@ -38,8 +43,9 @@ function Sidebar() {
           name={'city'}
           type={'text'}
           onChange={onChangeHandler}
-          defaultValue={values.city}
+          defaultValue={newcity}
         />
+
         <InputField
           label={'Check-in date'}
           name={'checkin'}
@@ -67,6 +73,12 @@ function Sidebar() {
           defaultValue={values.max}
         />
       </InputFieldWrapper>
+      {isCity && (
+        <ErrorMessage
+          message={'Please enter a destination to start searching.'}
+          className={'sideBar'}
+        />
+      )}
       <Button
         title={'Search'}
         className={'sidebar'}

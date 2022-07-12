@@ -14,7 +14,7 @@ import villa from './villa.jpg';
 import Calendar from './calender.svg';
 import Guest from './guest.svg';
 import Boon from './boon.svg';
-
+import spinner from './Preloader.svg';
 
 export {
   boohotLogo,
@@ -32,5 +32,6 @@ export {
   villa,
   Calendar,
   Guest,
-  Boon
+  Boon,
+  spinner,
 };
