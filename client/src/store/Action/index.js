@@ -10,5 +10,4 @@ export const GET_HOTEL_BY_TYPE = 'GET_HOTEL_BY_TYPE';
 export const GET_HOTEL_BY_CITY = 'GET_HOTEL_BY_CITY';
 export const GET_HOTEL = 'GET_HOTEL';
 export const SET_CITY = 'SET_CITY';
-
-
+export const GET_HOTEL_BY_ID = 'GET_HOTEL_BY_ID';

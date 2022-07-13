@@ -2,8 +2,9 @@ const initialState = {
   dataHotelByCity: [],
   dataHotelByType: [],
   dataHotel: [],
+  dataDetails:[],
   city: '',
-  loading: false
+  loading: false,
 };
 
 function Reducer(state = initialState, { type, payload }) {
@@ -18,6 +19,8 @@ function Reducer(state = initialState, { type, payload }) {
       return { ...state, city: payload };
     case 'SET_LOADING':
       return { ...state, loading: payload };
+    case 'GET_HOTEL_BY_ID':
+      return { ...state, dataDetails: payload };
     default:
       return state;
   }

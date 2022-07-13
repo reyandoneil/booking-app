@@ -16,11 +16,20 @@ import {
   Price,
   BottomLeftRight,
   TopLeftRight,
-  Availabillty,
 } from './CardPropertyElements';
+import { useNavigate } from 'react-router-dom';
 import { RupiahFormat } from '../../../utils';
+import { Button } from '../../Atoms';
+import { useDispatch } from 'react-redux';
+import { searchPropertyById } from '../../../store/Action/HotelAction';
 
-function CardProperty({ img, name, distance, city, price, ss }) {
+function CardProperty({ id, img, name, distance, city, price, ss }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onClickDetail = () => {
+    navigate(`/hotel/${id}`);
+    dispatch(searchPropertyById(id));
+  };
   return (
     <CardPropertyContainer ss={ss}>
       <Left>
@@ -51,7 +60,11 @@ function CardProperty({ img, name, distance, city, price, ss }) {
           <BottomLeftRight>
             <Price>{RupiahFormat(price)}</Price>
             <SubText>Include taxes and charges</SubText>
-            <Availabillty>See Availabillty</Availabillty>
+            <Button
+              title={'See Availability'}
+              className={'availability'}
+              onClick={onClickDetail}
+            />
           </BottomLeftRight>
         </LeftRight>
       </Right>

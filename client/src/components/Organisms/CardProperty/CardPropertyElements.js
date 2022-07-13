@@ -105,7 +105,7 @@ export const TopLeftRight = styled.div`
   height: 100px;
 `;
 
-export const Availabillty = styled.div`
+export const Availabillty = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -7,7 +7,6 @@ function Button({ title, className, ss, onClick,}) {
         className={className}
         ss={ss}
         onClick={onClick}
-
       >
         <ButtonTitle className={className}>{title}</ButtonTitle>
       </ButtonWrapper>

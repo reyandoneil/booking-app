@@ -15,6 +15,7 @@ import {
   Text,
 } from './ListHotelElements';
 
+
 function ListHotel() {
   const dispatch = useDispatch();
   const breakPoint = useSelector(
@@ -31,6 +32,8 @@ function ListHotel() {
     const newCity = JSON.parse(localStorage.getItem('city'));
     dispatch(searchProperty(newCity, 100000, 1000000));
   }, [dispatch]);
+
+
 
   return (
     <>
@@ -56,6 +59,7 @@ function ListHotel() {
                   return (
                     <CardProperty
                       key={i}
+                      id={datum._id}
                       img={datum.photo[0]}
                       name={datum.name}
                       distance={datum.distance}

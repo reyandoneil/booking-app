@@ -11,8 +11,7 @@ export const LoadingContainer = styled.div`
 
 export const Bg = styled.div``;
 
-export const MessageWrapper = styled.div``;
 export const Spinner = styled.img`
-  height: 30px;
-  width: 30px;
+  height: 100px;
+  width: 100px;
 `;
