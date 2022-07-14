@@ -106,3 +106,10 @@ export const DescTitle = styled.span`
 export const Desc = styled.p`
 
 `;
+
+export const MapWrapper = styled.div`
+margin-top: 30px ;
+ width:100% ;
+ height:00px ;
+ background-color:gray ;
+`

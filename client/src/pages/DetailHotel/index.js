@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Navbar, Sidebar } from '../../components/Organisms';
+import { Navbar, Sidebar, MapCOmp } from '../../components/Organisms';
 import {
   DetailHotelContainer,
   TopMenu,
@@ -17,6 +17,7 @@ import {
   DescWrapper,
   DescTitle,
   Desc,
+  MapWrapper
 } from './DetailHotelElements';
 import { Button } from '../../components/Atoms';
 import { Loading } from '../../components/Molecules';
@@ -29,7 +30,7 @@ function DetailHotel() {
     (state) => state.HotelsReducer.dataDetails
   );
   const loading = useSelector((state) => state.HotelsReducer.loading);
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const { hotelId } = useParams();
   console.log(details?.data);
@@ -73,6 +74,9 @@ function DetailHotel() {
               <DescTitle>{details?.data?.title}</DescTitle>
               <Desc>{details?.data?.desc}</Desc>
             </DescWrapper>
+            <MapWrapper>
+              <MapCOmp />
+            </MapWrapper>
           </>
         )}
       </DetailHotelContainer>

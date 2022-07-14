@@ -5,6 +5,7 @@ import CovidMessage from '../Organisms/Covid';
 import Footer from '../Organisms/Footer';
 import Sidebar from '../Organisms/Sidebar'
 import CardProperty from '../Organisms/CardProperty'
+import MapCOmp from '../Organisms/Map'
 
 
 export {
@@ -14,5 +15,6 @@ export {
   CovidMessage,
   Footer,
   Sidebar,
-  CardProperty
+  CardProperty,
+  MapCOmp
 };
