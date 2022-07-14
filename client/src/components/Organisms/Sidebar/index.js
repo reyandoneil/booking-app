@@ -59,7 +59,7 @@ function Sidebar() {
           type={'date'}
         />
         <InputField
-          label={'Minumum price per day'}
+          label={'Minimum price per day'}
           name={'min'}
           onChange={onChangeHandler}
           type={'number'}

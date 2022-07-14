@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Navbar, Sidebar, MapCOmp } from '../../components/Organisms';
+import { useSelector, useDispatch } from 'react-redux';
+import { Navbar, MapCOmp } from '../../components/Organisms';
 import {
   DetailHotelContainer,
   TopMenu,
@@ -17,12 +17,19 @@ import {
   DescWrapper,
   DescTitle,
   Desc,
-  MapWrapper
+  MapWrapper,
+  IconMarker,
+  Bg,
+  Map,
 } from './DetailHotelElements';
 import { Button } from '../../components/Atoms';
 import { Loading } from '../../components/Molecules';
+import { togle_icon } from '../../Assets';
+import { searchPropertyById } from '../../store/Action/HotelAction';
 
 function DetailHotel() {
+  const { hotelId } = useParams();
+  const dispatch = useDispatch();
   const breakPoint = useSelector(
     (state) => state.GlobalReducer.screenSize
   );
@@ -30,12 +37,29 @@ function DetailHotel() {
     (state) => state.HotelsReducer.dataDetails
   );
   const loading = useSelector((state) => state.HotelsReducer.loading);
-  useEffect(() => { }, []);
+  useEffect(() => {
+    dispatch(searchPropertyById(hotelId));
+  }, [dispatch]);
 
-  const { hotelId } = useParams();
-  console.log(details?.data);
+  const [isMap, setIsMap] = useState(false);
+  const openMapHandler = () => {
+    setIsMap(!isMap);
+  };
+
   return (
     <>
+      {isMap && (
+        <MapWrapper>
+          <Bg />
+          <Map>
+            <MapCOmp
+              onClick={openMapHandler}
+              marker={details?.data?.marker}
+              name={details?.data?.name}
+            />
+          </Map>
+        </MapWrapper>
+      )}
       <Navbar />
       <DetailHotelContainer ss={breakPoint}>
         {loading ? (
@@ -55,6 +79,7 @@ function DetailHotel() {
               <PropertyName>{details?.data?.name}</PropertyName>
             </TitleMenu>
             <PropertyAddress>
+              <IconMarker src={togle_icon} onClick={openMapHandler} />
               {details?.data?.address}
             </PropertyAddress>
             <PhotoGallery>
@@ -74,9 +99,6 @@ function DetailHotel() {
               <DescTitle>{details?.data?.title}</DescTitle>
               <Desc>{details?.data?.desc}</Desc>
             </DescWrapper>
-            <MapWrapper>
-              <MapCOmp />
-            </MapWrapper>
           </>
         )}
       </DetailHotelContainer>

@@ -30,7 +30,7 @@ function ListHotel() {
   );
   useEffect(() => {
     const newCity = JSON.parse(localStorage.getItem('city'));
-    dispatch(searchProperty(newCity, 100000, 1000000));
+    dispatch(searchProperty(newCity, 100000, 10000000));
   }, [dispatch]);
 
 

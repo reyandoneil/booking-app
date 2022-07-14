@@ -103,13 +103,36 @@ export const DescTitle = styled.span`
   font-weight: 600;
 `;
 
-export const Desc = styled.p`
+export const Desc = styled.p``;
 
+export const IconMarker = styled.img`
+  cursor: pointer;
+  height: 20px;
+  margin-right: 10px;
+  transition: transform 0.2s;
+  :hover {
+    transform: scale(1.5);
+  }
 `;
 
 export const MapWrapper = styled.div`
-margin-top: 30px ;
- width:100% ;
- height:00px ;
- background-color:gray ;
-`
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 99999;
+`;
+
+export const Bg = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 30%;
+  position: absolute;
+`;
+export const Map = styled.div`
+  padding-top: 100px ;
+  padding-left: 10%;
+  padding-right: 10%;
+`;
