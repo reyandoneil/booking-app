@@ -39,7 +39,7 @@ function DetailHotel() {
   const loading = useSelector((state) => state.HotelsReducer.loading);
   useEffect(() => {
     dispatch(searchPropertyById(hotelId));
-  }, [dispatch]);
+  }, [dispatch, hotelId]);
 
   const [isMap, setIsMap] = useState(false);
   const openMapHandler = () => {

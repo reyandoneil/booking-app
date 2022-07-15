@@ -132,6 +132,9 @@ export const Bg = styled.div`
   position: absolute;
 `;
 export const Map = styled.div`
+position: absolute;
+  height:80%;
+  width:80% ;
   padding-top: 100px ;
   padding-left: 10%;
   padding-right: 10%;
