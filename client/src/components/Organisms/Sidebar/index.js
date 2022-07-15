@@ -15,7 +15,7 @@ function Sidebar() {
   const [values, setValues] = useState({
     city: '',
     min: 100000,
-    max: 2000000,
+    max: 100000000,
   });
 
   //CLICK SEARCH
@@ -27,13 +27,17 @@ function Sidebar() {
       dispatch(searchProperty(values.city, values.min, values.max));
     }
   };
-
   const newcity = JSON.parse(localStorage.getItem('city'));
+
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+  // useEffect(() => {
+  //   const newCity = JSON.parse(localStorage.getItem('city'));
+  //   setValues({ ...values, city: newCity });
+  // }, []);
   return (
     <SidebarWrapper>
       <Title>Search</Title>

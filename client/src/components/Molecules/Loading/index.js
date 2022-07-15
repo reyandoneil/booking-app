@@ -1,6 +1,5 @@
 import {
   LoadingContainer,
-  Bg,
   Spinner,
 } from './LoadingElements';
 import { spinner } from '../../../Assets';

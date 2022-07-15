@@ -15,7 +15,8 @@ import Calendar from './calender.svg';
 import Guest from './guest.svg';
 import Boon from './boon.svg';
 import spinner from './Preloader.svg';
-import map_close_icon from './map_close_icon.svg'
+import map_close_icon from './map_close_icon.svg';
+import back_btn from './back_btn.svg';
 
 export {
   boohotLogo,
@@ -35,5 +36,6 @@ export {
   Guest,
   Boon,
   spinner,
-  map_close_icon
+  map_close_icon,
+  back_btn,
 };

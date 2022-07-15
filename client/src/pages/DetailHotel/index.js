@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navbar, MapCOmp } from '../../components/Organisms';
 import {
@@ -21,14 +21,16 @@ import {
   IconMarker,
   Bg,
   Map,
+  BackBtn,
 } from './DetailHotelElements';
 import { Button } from '../../components/Atoms';
 import { Loading } from '../../components/Molecules';
-import { togle_icon } from '../../Assets';
+import { togle_icon, back_btn } from '../../Assets';
 import { searchPropertyById } from '../../store/Action/HotelAction';
 
 function DetailHotel() {
   const { hotelId } = useParams();
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
   const breakPoint = useSelector(
     (state) => state.GlobalReducer.screenSize
@@ -45,7 +47,9 @@ function DetailHotel() {
   const openMapHandler = () => {
     setIsMap(!isMap);
   };
-
+  const backHandler = () => {
+    Navigate(-1);
+  };
   return (
     <>
       {isMap && (
@@ -67,6 +71,7 @@ function DetailHotel() {
         ) : (
           <>
             <TopMenu>
+            <BackBtn src={back_btn} onClick={backHandler} />
               <Button
                 title={'Info & price'}
                 className={'topDetail'}

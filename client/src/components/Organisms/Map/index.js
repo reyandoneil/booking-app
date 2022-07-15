@@ -10,11 +10,9 @@ import {
 } from 'react-leaflet';
 import { map_close_icon } from '../../../Assets';
 import { CloseButton } from './MapElements';
-import { useSelector } from 'react-redux';
+
 function MapComp({ onClick, marker, name }) {
-    const breakPoint = useSelector(
-        (state) => state.GlobalReducer.screenSize
-    )
+   
     return (
         <>
             <CloseButton src={map_close_icon} onClick={onClick} />
@@ -23,6 +21,8 @@ function MapComp({ onClick, marker, name }) {
                 center={marker}
                 zoom={18}
                 scrollWheelZoom={true}
+                zoomAnimation={true}
+                fadeAnimation={true}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

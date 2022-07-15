@@ -9,7 +9,6 @@ export const LoadingContainer = styled.div`
   align-items: center;
 `;
 
-export const Bg = styled.div``;
 
 export const Spinner = styled.img`
   height: 100px;

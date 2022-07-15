@@ -28,7 +28,7 @@ export const setLoading = (payload) => {
 export const getHotelsByCity = () => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      Delay(1000).then(() => {
+      Delay(10).then(() => {
         dispatch({
           type: GET_HOTEL_BY_CITY,
           payload: data.data,
@@ -60,7 +60,7 @@ export const getHotelsByCity = () => {
 export const getHotelsByType = () => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      Delay(1000).then(() => {
+      Delay(10).then(() => {
         dispatch({
           type: GET_HOTEL_BY_TYPE,
           payload: data.data,
@@ -89,7 +89,7 @@ export const getHotelsByType = () => {
 export const searchProperty = (city, min, max) => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      Delay(6000).then(() => {
+      Delay(60).then(() => {
         dispatch(setLoading(false));
         dispatch({
           type: GET_HOTEL,
@@ -120,7 +120,7 @@ export const searchProperty = (city, min, max) => {
 export const searchPropertyById = (id) => {
   return async (dispatch) => {
     const onSuccess = (data) => {
-      Delay(3000).then(() => {
+      Delay(30).then(() => {
         dispatch(setLoading(false));
         dispatch({
           type: GET_HOTEL_BY_ID,

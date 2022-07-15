@@ -132,10 +132,21 @@ export const Bg = styled.div`
   position: absolute;
 `;
 export const Map = styled.div`
-position: absolute;
-  height:80%;
-  width:80% ;
-  padding-top: 100px ;
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  padding-top: 100px;
   padding-left: 10%;
   padding-right: 10%;
+`;
+
+export const BackBtn = styled.img`
+  height: 25px;
+  margin-right: 40px;
+
+  cursor: pointer;
+  transition: transform 0.2s;
+  :hover {
+    transform: scale(1.5);
+  }
 `;
