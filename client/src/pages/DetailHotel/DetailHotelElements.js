@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DetailHotelContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   max-width: 100vw;
   margin-top: 40px;
   margin-bottom: 100px;
@@ -48,6 +48,8 @@ export const TopMenu = styled.div`
 export const TitleMenu = styled.div`
   display: flex;
   margin: 10px 0 10px 0;
+  align-items: center;
+  /* min-width: 700px; */
 `;
 
 export const PropertyName = styled.span`
@@ -58,11 +60,13 @@ export const PropertyName = styled.span`
 
 export const PropertyType = styled.div`
   background-color: #949494;
+  font-size: 0.8rem;
   color: white;
-  padding: 10px;
-  max-height: 100%;
+  height: fit-content;
+  width: fit-content;
   margin-right: 20px;
   border-radius: 3px;
+  padding: 2px 5px 2px 5px;
 `;
 export const PropertyAddress = styled.span``;
 
@@ -94,7 +98,17 @@ export const Img = styled.img`
 `;
 
 export const DescWrapper = styled.div`
-  margin-top: 30px;
+  ${(props) => {
+    if (props.ss === 'sm' || props.ss === 'xs') {
+      return `
+      width: 100%;
+    `;
+    } else {
+      return `
+      width: 70%;
+    `;
+    }
+  }}
   display: flex;
   flex-direction: column;
 `;
@@ -103,12 +117,16 @@ export const DescTitle = styled.span`
   font-weight: 600;
 `;
 
-export const Desc = styled.p``;
+export const Desc = styled.p`
+  text-align: justify;
+  width: 100%;
+`;
 
 export const IconMarker = styled.img`
   cursor: pointer;
   height: 20px;
   margin-right: 10px;
+  margin-left: 10px;
   transition: transform 0.2s;
   :hover {
     transform: scale(1.5);
@@ -149,4 +167,62 @@ export const BackBtn = styled.img`
   :hover {
     transform: scale(1.5);
   }
+`;
+
+export const HighlightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      margin-left: 0px;
+      margin-right: 0px; 
+      `;
+    } else {
+      return `
+      margin-left: 30px;
+      `;
+    }
+  }}
+  max-width: 250px;
+  background-color: #ebf3ff;
+  height: 400px;
+  padding: 20px;
+`;
+
+export const FacilityWrapper = styled.div`
+  margin-bottom: 50px;
+`;
+export const DescHighlight = styled.div`
+  display: flex;
+  margin-top: 30px;
+  ${(props) => {
+    if (props.ss === 'xs' || props.ss === 'sm') {
+      return `
+      flex-direction: column;
+    `;
+    } else {
+      return `
+    flex-direction: row;
+    `;
+    }
+  }}
+`;
+
+export const DescHighlightWrapper = styled.div`
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TextDesc = styled.span`
+  font-size: 14px;
+  margin: 5px 0 5px 0;
+`;
+
+export const ButtonReserveWrapper = styled.div`
+  width: 140px;
+`;
+export const PropertyWrapper = styled.div`
+  width: 80%;
 `;

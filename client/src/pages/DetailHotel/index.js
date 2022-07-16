@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Navbar, MapCOmp } from '../../components/Organisms';
+import { Navbar, MapCOmp, Footer } from '../../components/Organisms';
 import {
   DetailHotelContainer,
   TopMenu,
@@ -22,10 +22,17 @@ import {
   Bg,
   Map,
   BackBtn,
+  HighlightWrapper,
+  FacilityWrapper,
+  DescHighlight,
+  DescHighlightWrapper,
+  TextDesc,
+  ButtonReserveWrapper,
+  PropertyWrapper,
 } from './DetailHotelElements';
 import { Button } from '../../components/Atoms';
 import { Loading } from '../../components/Molecules';
-import { togle_icon, back_btn } from '../../Assets';
+import { togle_icon, back_btn, fiveStar, fourStar,threeStar } from '../../Assets';
 import { searchPropertyById } from '../../store/Action/HotelAction';
 
 function DetailHotel() {
@@ -37,6 +44,9 @@ function DetailHotel() {
   );
   const details = useSelector(
     (state) => state.HotelsReducer.dataDetails
+  );
+  const rating = useSelector(
+    (state) => state?.HotelsReducer?.dataDetails?.data?.rating
   );
   const loading = useSelector((state) => state.HotelsReducer.loading);
   useEffect(() => {
@@ -50,6 +60,17 @@ function DetailHotel() {
   const backHandler = () => {
     Navigate(-1);
   };
+
+  const stars = () => {
+    switch (rating) {
+      case 3: return    <IconMarker src={threeStar} />
+      case 4: return    <IconMarker src={fourStar} />
+      case 5: return    <IconMarker src={fiveStar} />
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       {isMap && (
@@ -71,7 +92,7 @@ function DetailHotel() {
         ) : (
           <>
             <TopMenu>
-            <BackBtn src={back_btn} onClick={backHandler} />
+              <BackBtn src={back_btn} onClick={backHandler} />
               <Button
                 title={'Info & price'}
                 className={'topDetail'}
@@ -80,8 +101,17 @@ function DetailHotel() {
               <Button title={'House rules'} className={'topDetail'} />
             </TopMenu>
             <TitleMenu>
-              <PropertyType>{details?.data?.type}</PropertyType>
-              <PropertyName>{details?.data?.name}</PropertyName>
+              <PropertyWrapper>
+                <PropertyType>{details?.data?.type}</PropertyType>
+                <PropertyName>{details?.data?.name}</PropertyName>
+                {stars()}
+              </PropertyWrapper>
+              <ButtonReserveWrapper>
+                <Button
+                  title={'Reserve'}
+                  className={'availability'}
+                />
+              </ButtonReserveWrapper>
             </TitleMenu>
             <PropertyAddress>
               <IconMarker src={togle_icon} onClick={openMapHandler} />
@@ -100,13 +130,37 @@ function DetailHotel() {
                 <Img src={details?.data?.photo[0]} />
               </RightWrapper>
             </PhotoGallery>
-            <DescWrapper>
-              <DescTitle>{details?.data?.title}</DescTitle>
-              <Desc>{details?.data?.desc}</Desc>
-            </DescWrapper>
+            <DescHighlight ss={breakPoint}>
+              <DescWrapper ss={breakPoint}>
+                <DescTitle>{details?.data?.title}</DescTitle>
+                <Desc>{details?.data?.desc}</Desc>
+                <FacilityWrapper>
+                  <DescTitle>Most popular facility</DescTitle>
+                </FacilityWrapper>
+              </DescWrapper>
+              <HighlightWrapper ss={breakPoint}>
+                <DescHighlightWrapper>
+                  <DescTitle>Property highlight</DescTitle>
+                  <TextDesc>
+                    Continental, Halal, Asian, American, Buffet
+                  </TextDesc>
+                  <DescTitle>Breakfast info</DescTitle>
+                  <TextDesc>{details?.data?.breakFastInfo}</TextDesc>
+                  <DescTitle>Rooms with:</DescTitle>
+                  <TextDesc>
+                    Continental, Halal, Asian, American, Buffet
+                  </TextDesc>
+                </DescHighlightWrapper>
+                <Button
+                  title={'Reserve'}
+                  className={'availability'}
+                />
+              </HighlightWrapper>
+            </DescHighlight>
           </>
         )}
       </DetailHotelContainer>
+      <Footer />
     </>
   );
 }

@@ -17,6 +17,10 @@ import Boon from './boon.svg';
 import spinner from './Preloader.svg';
 import map_close_icon from './map_close_icon.svg';
 import back_btn from './back_btn.svg';
+import fiveStar from './fiveStar.svg';
+import fourStar from './fourStar.svg';
+import threeStar from './threeStar.svg';
+import breakfast from './breakfast.svg';
 
 export {
   boohotLogo,
@@ -38,4 +42,8 @@ export {
   spinner,
   map_close_icon,
   back_btn,
+  breakfast,
+  fiveStar,
+  fourStar,
+  threeStar
 };
