@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="242.045" height="226.345" viewBox="0 0 242.045 226.345">
+  <g id="Group_24" data-name="Group 24" transform="translate(-2446.306 444.67)">
+    <g id="Group_23" data-name="Group 23" transform="translate(0 81.256)">
+      <path id="Subtraction_1" data-name="Subtraction 1" d="M215.542,91.518H191.153a29.856,29.856,0,0,0-59.642,0H88.451a29.856,29.856,0,0,0-59.642,0H0V0H197.084V40.02l18.457,8.8v42.7Z" transform="translate(2472.81 -420.007)" fill="#343434"/>
+      <circle id="Ellipse_10" data-name="Ellipse 10" cx="25.377" cy="25.377" r="25.377" transform="translate(2506.958 -350.335)" fill="#343434"/>
+      <circle id="Ellipse_11" data-name="Ellipse 11" cx="25.377" cy="25.377" r="25.377" transform="translate(2609.66 -350.335)" fill="#343434"/>
+      <g id="Rectangle_16" data-name="Rectangle 16" transform="translate(2484 -403.256)" fill="#fff" stroke="#707070" stroke-width="1">
+        <rect width="34" height="29" stroke="none"/>
+        <rect x="0.5" y="0.5" width="33" height="28" fill="none"/>
+      </g>
+      <g id="Rectangle_19" data-name="Rectangle 19" transform="translate(2574 -403.256)" fill="#fff" stroke="#707070" stroke-width="1">
+        <rect width="34" height="29" stroke="none"/>
+        <rect x="0.5" y="0.5" width="33" height="28" fill="none"/>
+      </g>
+      <g id="Rectangle_17" data-name="Rectangle 17" transform="translate(2529 -403.256)" fill="#fff" stroke="#707070" stroke-width="1">
+        <rect width="34" height="29" stroke="none"/>
+        <rect x="0.5" y="0.5" width="33" height="28" fill="none"/>
+      </g>
+      <g id="Rectangle_18" data-name="Rectangle 18" transform="translate(2620 -403.256)" fill="#fff" stroke="#707070" stroke-width="1">
+        <rect width="34" height="29" stroke="none"/>
+        <rect x="0.5" y="0.5" width="33" height="28" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_64" data-name="Path 64" d="M2610.306-87c3.283-.339,10.507-5.592,10.507-5.592l33.49,12.477,40.058-21.67-63.7-23.641,23.64-9.85,98.5,9.85,48.594-22.327s44-4.6,13.134,22.327-107.7,53.191-107.7,53.191l-65.668,15.1Z" transform="translate(-164 -296.619)" fill="#343434"/>
+  </g>
+</svg>

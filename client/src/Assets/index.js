@@ -21,6 +21,15 @@ import fiveStar from './fiveStar.svg';
 import fourStar from './fourStar.svg';
 import threeStar from './threeStar.svg';
 import breakfast from './breakfast.svg';
+import swimmingPool from './swimmingPool.svg';
+import fitnessCenter from './fitnessCenter.svg';
+import restaurant from './restaurant.svg';
+import bar from './bar.svg';
+import airportShuttle from './airportShuttle.svg';
+import spa from './spa.svg';
+import freeParking from './freeParking.svg';
+import wifi from './wifi.svg';
+
 
 export {
   boohotLogo,
@@ -45,5 +54,13 @@ export {
   breakfast,
   fiveStar,
   fourStar,
-  threeStar
+  threeStar,
+  swimmingPool,
+  fitnessCenter,
+  restaurant,
+  bar,
+  airportShuttle,
+  spa,
+  freeParking,
+  wifi
 };

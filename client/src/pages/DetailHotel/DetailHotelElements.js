@@ -192,6 +192,8 @@ export const HighlightWrapper = styled.div`
 
 export const FacilityWrapper = styled.div`
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
 `;
 export const DescHighlight = styled.div`
   display: flex;
@@ -225,4 +227,19 @@ export const ButtonReserveWrapper = styled.div`
 `;
 export const PropertyWrapper = styled.div`
   width: 80%;
+`;
+
+export const FacilityIconWrapper = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+height: fit-content;
+
+`;
+
+export const IconFacilityWrapper = styled.div`
+  height: fit-content;
+  min-width: fit-content;
+  padding: 3px;
+  
 `;

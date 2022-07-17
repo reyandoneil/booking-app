@@ -42,7 +42,7 @@ const HotelSchema = new mongoose.Schema({
     max: 5,
   },
   facilities: {
-    type: [],
+    type: [Object],
   },
   breakFastInfo: {
     type: [String],
